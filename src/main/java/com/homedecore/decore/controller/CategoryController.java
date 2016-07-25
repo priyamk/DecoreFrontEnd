@@ -24,11 +24,21 @@ public class CategoryController {
 		this.categoryDAO = ps;
 	}
 	
-	@RequestMapping(value = "/categories", method = RequestMethod.GET)
-	public String listCategorys(Model model) {
+	
+	@RequestMapping(value = "/onLoad", method = RequestMethod.GET)
+	public String onLoad(Model model) {
+		System.out.println("onLoad");
 		model.addAttribute("category", new Category());
 		model.addAttribute("categoryList", this.categoryDAO.list());
-		return "category";
+		return "userHome";
+	}
+	
+	@RequestMapping(value = "/categories", method = RequestMethod.GET)
+	public String listCategorys(Model model) {
+		model.addAttribute("isCategoriesClicked", "TRUE");
+		model.addAttribute("category", new Category());
+		model.addAttribute("categoryList", this.categoryDAO.list());
+		return "adminHome";
 	}
 	
 	//For add and update category both
@@ -59,8 +69,9 @@ public class CategoryController {
     @RequestMapping("category/edit/{id}")
     public String editCategory(@PathVariable("id") String id, Model model){
     	System.out.println("editCategory");
+    	model.addAttribute("isCategoriesClicked", "TRUE");
         model.addAttribute("category", this.categoryDAO.get(id));
-        model.addAttribute("listCategorys", this.categoryDAO.list());
-        return "category";
+        model.addAttribute("categoryList", this.categoryDAO.list());
+        return "adminHome";
     }
 	}

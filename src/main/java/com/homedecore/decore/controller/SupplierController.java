@@ -27,9 +27,10 @@ public class SupplierController {
 	
 	@RequestMapping(value = "/suppliers", method = RequestMethod.GET)
 	public String listSuppliers(Model model) {
+		model.addAttribute("isSupplierClicked", "TRUE");
 		model.addAttribute("supplier", new Supplier());
 		model.addAttribute("supplierList", this.supplierDAO.list());
-		return "supplier";
+		return "adminHome";
 	}
 	
 	//For add and update supplier both
@@ -60,8 +61,9 @@ public class SupplierController {
     @RequestMapping("supplier/edit/{id}")
     public String editSupplier(@PathVariable("id") String id, Model model){
     	System.out.println("editSupplier");
+    	model.addAttribute("isSupplierClicked", "TRUE");
         model.addAttribute("supplier", this.supplierDAO.get(id));
-        model.addAttribute("listSuppliers", this.supplierDAO.list());
-        return "supplier";
+        model.addAttribute("supplierList", this.supplierDAO.list());
+        return "adminHome";
     }
 	}

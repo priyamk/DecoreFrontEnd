@@ -14,18 +14,21 @@ public class HomeController {
 	
 	
 	@RequestMapping("/welcome")
-    public String home(Model model){
+    public String adminhome(Model model){
 		
 		model.addAttribute("msg","hello");
         return "adminHome";
     }
+	
+
 
     @RequestMapping(value="/login" , method=RequestMethod.GET)
     public String login(
             @RequestParam(value="error", required = false)
             String error,
             @RequestParam(value="logout", required = false)
-            String logout,
+            String logout,@RequestParam(value="login", required = false)
+            String login,
             Model model){
 
         if(error != null){
@@ -33,10 +36,15 @@ public class HomeController {
         }
 
         if (logout !=null){
-            model.addAttribute("messsge", "You have been logged out successfully");
+            model.addAttribute("logoutMsg", "You have been logged out successfully");
+            model.addAttribute("isLogoutClicked", "TRUE");
         }
-
-        return "login";
+        model.addAttribute("isLoginClicked", "TRUE");
+     
+        
+        return "userHome";
     }
+    
+    
 
 }

@@ -3,20 +3,21 @@
 <html>
 <head>
 
-<title>Shopping chart</title>
+<title>home decore</title>
 </head>
 <body>
 
-	Please login with your credentials
+	<div class="container text-center">
+	<h3>Login with your credentials :</h3></div>
 	<br> ${message}
-	<form name="loginForm" action="<c:url value="/j_spring_security_check" />" method="post">
+	<form class="form-inline" name="loginForm" action="<c:url value="/j_spring_security_check" />" method="post">
 
                 <c:if test="${not empty error}">
                     <div class="error" style="color: #ff0000;">${error}</div>
                 </c:if>
 
                 <div class="form-group">
-                    <label for="username">User: </label>
+                    <label for="username">UserName: </label>
                     <input type="text" id="username" name="username" class="form-control" />
                 </div>
                 <div class="form-group">
@@ -27,6 +28,5 @@
             </form>
         
 
-<a href="<c:url value="/j_spring_security_logout" />">logout</a>
 </body>
 </html>

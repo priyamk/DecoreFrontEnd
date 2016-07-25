@@ -45,7 +45,8 @@
 </style>
 </head>
 <body>
-	<h1>Add a Supplier</h1>
+	<c:if test="${!empty supplier.name}"><h1>Edit Supplier</h1></c:if>
+	<c:if test="${empty supplier.name}"><h1>Add a Supplier</h1></c:if>
 
 	<c:url var="addAction" value="/supplier/add"></c:url>
 
@@ -91,7 +92,8 @@
 	<br>
 	<h3>Supplier List</h3>
 	<c:if test="${!empty supplierList}">
-		<table class="tg">
+	<div class="table-responsive">
+		<table class="table">
 			<tr>
 				<th width="80">Supplier ID</th>
 				<th width="120">Supplier Name</th>
@@ -109,6 +111,7 @@
 				</tr>
 			</c:forEach>
 		</table>
+		</div>
 	</c:if>
 </body>
 </html>

@@ -45,7 +45,8 @@
 </style>
 </head>
 <body>
-	<h1>Add a Category</h1>
+<c:if test="${!empty category.name}"><h1>Edit Category</h1></c:if>
+	<c:if test="${empty category.name}"><h1>Add a Category</h1></c:if>
 
 	<c:url var="addAction" value="/category/add"></c:url>
 
@@ -92,7 +93,8 @@
 	<br>
 	<h3>Category List</h3>
 	<c:if test="${!empty categoryList}">
-		<table class="tg">
+		<div class="table-responsive">
+		<table class="table">
 			<tr>
 				<th width="80">Category ID</th>
 				<th width="120">Category Name</th>
@@ -110,6 +112,7 @@
 				</tr>
 			</c:forEach>
 		</table>
+		</div>
 	</c:if>
 </body>
 </html>
